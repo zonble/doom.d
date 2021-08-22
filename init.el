@@ -208,15 +208,19 @@
       (arrange-frame 120 40 40 40)
       (if (eq window-system `w32)
           ;; (set-font "JetBrains Mono" "MingLiU" 18 21)
-          (set-font "SF Mono" "MingLiU" 15 18)
-        )))
+          (set-font "SF Mono" "MingLiU" 15 18))
+      (if (eq window-system `x)
+          (set-font "IBM Plex Mono Text" "Noto Sans Mono CJK TC" 20 24))
+      ))
 
 (global-set-key [home] 'move-beginning-of-line)
 (global-set-key [end] 'move-end-of-line)
-
 
 (if (eq system-type `windows-nt)
     (progn
       (add-to-list 'exec-path "C:\Program Files (x86)\hunspell-1.3.2-3-w32-bin\bin")
       (setq ispell-program-name (locate-file "hunspell" exec-path exec-suffixes 'file-executable-p))
       ))
+
+;; (global-set-key [(super q)] `set-mark-command)
+(setq confirm-kill-emacs nil)

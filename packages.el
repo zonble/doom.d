@@ -10,6 +10,7 @@
 ;(package! some-package)
 (package! writeroom-mode)
 (package! org-tree-slide)
+(package! org-re-reveal)
 (package! dired-sidebar)
 
 ;; To install a package directly from a remote git repo, you must specify a

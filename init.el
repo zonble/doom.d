@@ -205,12 +205,15 @@
 ;; Set custom font.
 (if window-system
     (progn
-      (arrange-frame 120 40 40 40)
+;;      (arrange-frame 120 40 40 40)
       (if (eq window-system `w32)
           ;; (set-font "JetBrains Mono" "MingLiU" 18 21)
           (set-font "SF Mono" "MingLiU" 15 18))
       (if (eq window-system `x)
-          (set-font "IBM Plex Mono Text" "Noto Sans Mono CJK TC" 20 24))
+          (set-font "IBM Plex Mono Text" "Noto Sans Mono CJK TC" 18 22))
+      (if (eq window-system `ns)
+          (set-font "Monaco" "LantingHei TC" 18 22))
+
       ))
 
 (global-set-key [home] 'move-beginning-of-line)
@@ -224,3 +227,4 @@
 
 ;; (global-set-key [(super q)] `set-mark-command)
 (setq confirm-kill-emacs nil)
+(global-wakatime-mode)

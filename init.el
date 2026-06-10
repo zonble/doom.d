@@ -205,7 +205,7 @@
 ;; Set custom font.
 (if window-system
     (progn
-;;      (arrange-frame 120 40 40 40)
+      ;;      (arrange-frame 120 40 40 40)
       (if (eq window-system `w32)
           ;; (set-font "JetBrains Mono" "MingLiU" 18 21)
           (set-font "SF Mono" "MingLiU" 15 18))
@@ -227,4 +227,4 @@
 
 ;; (global-set-key [(super q)] `set-mark-command)
 (setq confirm-kill-emacs nil)
-(global-wakatime-mode)
+(ignore-errors (global-wakatime-mode))

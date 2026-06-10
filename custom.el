@@ -11,3 +11,25 @@
             ;; Your init file should contain only one such instance.
             ;; If there is more than one, they won't work right.
             )))
+
+(setq-default line-move-visual t)
+(setq-default word-wrap t)
+(setq-default word-wrap-by-category t)
+
+(defun my/set-fill-width (width)
+  (interactive "nWidth: ")
+  (setq visual-fill-column-width width))
+
+(defun my/enable-writing-mode ()
+  "Enable 80-column soft wrapping for writing."
+  (interactive)
+  (visual-line-mode 1)
+  (visual-fill-column-mode 1)
+  (setq-local visual-fill-column-width 80
+              visual-fill-column-center-text nil))
+
+(defun my/disable-writing-mode ()
+  "Disable visual soft wrapping."
+  (interactive)
+  (visual-fill-column-mode -1)
+  (visual-line-mode -1))

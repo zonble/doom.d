@@ -22,6 +22,26 @@
 ;; (setq doom-font (font-spec :family "monospace" :size 12 :weight 'semi-light)
 ;;       doom-variable-pitch-font (font-spec :family "sans" :size 13))
 
+(when (eq system-type 'darwin)
+  (setq doom-font (font-spec :family "Monaco" :size 15)
+        doom-symbol-font (font-spec :family "PingFang TC" :size 18))
+
+  (defun my/apply-macos-cjk-font ()
+    (let ((cjk-font (font-spec :family "PingFang TC" :size 18)))
+      (dolist (charset '(han kana cjk-misc bopomofo))
+        (set-fontset-font t charset cjk-font))
+      (dolist (range '((#x2E80 . #x9FFF)
+                       (#xF900 . #xFAFF)
+                       (#x20000 . #x2A6DF)
+                       (#x2A700 . #x2B73F)
+                       (#x2B740 . #x2B81F)
+                       (#x2B820 . #x2CEAF)
+                       (#x3000 . #x303F)
+                       (#xFF00 . #xFFEF)))
+        (set-fontset-font t range cjk-font))))
+
+  (add-hook 'after-setting-font-hook #'my/apply-macos-cjk-font 90))
+
 ;; There are two ways to load a theme. Both assume the theme is installed and
 ;; available. You can either set `doom-theme' or manually load a theme with the
 ;; `load-theme' function. This is the default:

@@ -188,33 +188,12 @@
        ;;literate
        (default +bindings +smartparens))
 
-(defun set-font (english chinese english-size chinese-size)
-  (set-face-attribute 'default nil :font
-                      (format "%s:pixelsize=%d" english english-size))
-  (dolist (charset '(kana han symbol cjk-misc bopomofo))
-    (set-fontset-font (frame-parameter nil 'font) charset
-                      (font-spec :family chinese :size chinese-size))))
-
 (defun arrange-frame (w h x y)
   "Set the width, height, and x/y position of the current frame"
   (let ((frame (selected-frame)))
     (delete-other-windows)
     (set-frame-position frame x y)
     (set-frame-size frame w h)))
-
-;; Set custom font.
-(if window-system
-    (progn
-      ;;      (arrange-frame 120 40 40 40)
-      (if (eq window-system `w32)
-          ;; (set-font "JetBrains Mono" "MingLiU" 18 21)
-          (set-font "SF Mono" "MingLiU" 15 18))
-      (if (eq window-system `x)
-          (set-font "IBM Plex Mono Text" "Noto Sans Mono CJK TC" 18 22))
-      (if (eq window-system `ns)
-          (set-font "Monaco" "LantingHei TC" 18 22))
-
-      ))
 
 (global-set-key [home] 'move-beginning-of-line)
 (global-set-key [end] 'move-end-of-line)

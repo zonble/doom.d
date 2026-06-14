@@ -195,8 +195,8 @@
     (set-frame-position frame x y)
     (set-frame-size frame w h)))
 
-(global-set-key [home] 'move-beginning-of-line)
-(global-set-key [end] 'move-end-of-line)
+;;(global-set-key [home] 'move-beginning-of-line)
+;;(global-set-key [end] 'move-end-of-line)
 
 (if (eq system-type `windows-nt)
     (progn

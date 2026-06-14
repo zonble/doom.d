@@ -25,11 +25,23 @@
   (interactive)
   (visual-line-mode 1)
   (visual-fill-column-mode 1)
-  (setq-local visual-fill-column-width 80
-              visual-fill-column-center-text nil))
+  ;; (visual-fill-column-toggle-center-text)
+  (ruler-mode)
+  (setq-local visual-fill-column-width 60
+              visual-fill-column-center-text t)
+
+  (local-set-key [home] 'beginning-of-visual-line)
+  (local-set-key [end] 'end-of-visual-line)
+  (local-set-key (kbd "C-a") 'beginning-of-visual-line)
+  (local-set-key (kbd "C-e") 'end-of-visual-line))
 
 (defun my/disable-writing-mode ()
   "Disable visual soft wrapping."
   (interactive)
   (visual-fill-column-mode -1)
-  (visual-line-mode -1))
+  (visual-line-mode -1)
+  (ruler-mode -1)
+  (local-unset-key [home])
+  (local-unset-key [end])
+  (local-unset-key (kbd "C-a"))
+  (local-unset-key (kbd "C-e")))
